@@ -1,0 +1,24 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:dt="using:ChallangeConfigurator.Core.Templates"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ChallangeConfigurator.Views.Pages.MainMenuPage">
+   <StackPanel Spacing="5">
+       <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
+       
+       <ListBox Items="{Binding Games}" Margin="5" SelectedItem="{Binding SelectedGame, Mode=TwoWay}">
+           <ListBox.ItemTemplate>
+               <dt:ListItemTemplate />
+           </ListBox.ItemTemplate>
+           
+           <ListBox.ItemsPanel>
+               <ItemsPanelTemplate>
+                   <StackPanel Orientation="Vertical" Spacing="5" />
+               </ItemsPanelTemplate>
+           </ListBox.ItemsPanel>
+       </ListBox>
+   </StackPanel>
+</UserControl>

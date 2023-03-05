@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:rxui="clr-namespace:Avalonia.ReactiveUI;assembly=Avalonia.ReactiveUI"
+        xmlns:app="clr-namespace:ChallangeConfigurator"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+        xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ChallangeConfigurator.Views.MainWindow"
+        Title="Challange Configurator">
+    <Grid Margin="3">
+        <controls:FloatingButton ToolTip.Tip="Zurück" IsVisible="{Binding CanGoBack, Mode=TwoWay}" ZIndex="1000" Classes="Mini" Command="{Binding GoBack}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3">
+            <Viewbox Stretch="Fill"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch">
+                <icons:MaterialIcon Kind="ArrowBack" Width="24" Height="24" />
+            </Viewbox>
+        </controls:FloatingButton>
+        
+        <rxui:RoutedViewHost Router="{Binding Router}" Margin="5" />
+    </Grid>
+</Window>

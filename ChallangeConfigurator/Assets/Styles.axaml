@@ -1,0 +1,26 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+    <Style Selector="ItemsControl.headerButtons">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="ItemTemplate">
+            <DataTemplate>
+                <controls:FloatingButton Classes="Mini" Command="{Binding Command, Mode=TwoWay}"  ToolTip.Tip="{Binding Tooltip}">
+                    <Viewbox Stretch="Fill"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch">
+                        <avalonia:MaterialIcon Kind="{Binding Kind, Mode=TwoWay}" Width="22" Height="22" />
+                    </Viewbox>
+                </controls:FloatingButton>
+            </DataTemplate>
+        </Setter>
+        
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" Spacing="5" />
+            </ItemsPanelTemplate>
+        </Setter>
+    </Style>
+</Styles>

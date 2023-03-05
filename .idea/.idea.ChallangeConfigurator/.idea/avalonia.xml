@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="ChallangeConfigurator/App.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Assets/DataTemplates.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Assets/Styles.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Views/MainWindow.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Views/Pages/ChallangesPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Views/Pages/MainMenuPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Views/Pages/StatisticsPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
