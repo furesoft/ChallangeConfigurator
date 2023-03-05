@@ -2,33 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
-             xmlns:icons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-             xmlns:dt="using:ChallangeConfigurator.Core.Templates"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ChallangeConfigurator.Views.Pages.ChallangesPage">
     <StackPanel Spacing="5">
         <Grid>
             <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
 
-            <StackPanel HorizontalAlignment="Left" Margin="50,0,0,0" Spacing="10" Orientation="Horizontal" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Left" Margin="50,0,0,0" Spacing="10" Orientation="Horizontal"
+                        VerticalAlignment="Center">
                 <Image Source="{Binding SelectedGame.Image}" />
                 <TextBlock Text="{Binding SelectedGame.Name, Mode=TwoWay}" FontSize="22" />
             </StackPanel>
         </Grid>
-
-        <ListBox Margin="5,20,5,5" Items="{Binding Challanges}" SelectedItem="{Binding SelectedChallange, Mode=TwoWay}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}" TextAlignment="Center" FontSize="20" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical" Spacing="5" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
+        
+        <ListBox Classes="items" Margin="5,20,5,5" Items="{Binding Challanges}"
+                 SelectedItem="{Binding SelectedChallange, Mode=TwoWay}" />
     </StackPanel>
 </UserControl>

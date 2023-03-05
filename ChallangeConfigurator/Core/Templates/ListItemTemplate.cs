@@ -9,38 +9,39 @@ public class ListItemTemplate : IDataTemplate
 {
     public Control? Build(object? param)
     {
-        if (param is NamedImageModel model)
-        {
-            model.LoadImage();
-            
-            var grid = new Grid();
+        var grid = new Grid();
 
+        var model = (BaseNameModel)param;
+        
+        var text = new TextBlock();
+        text.HorizontalAlignment = HorizontalAlignment.Center;
+        text.VerticalAlignment = VerticalAlignment.Center;
+        text.FontSize = 22;
+        text.Text = model.Name;
+            
+        grid.Children.Add(text);
+            
+        if (param is NamedImageModel nmodel)
+        {
+            nmodel.LoadImage();
+            
             var img = new Image
             {
-                Source = model.Image,
+                Source = nmodel.Image,
                 Width = 50,
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Left
             };
             
             grid.Children.Add(img);
-
-            var text = new TextBlock();
-            text.HorizontalAlignment = HorizontalAlignment.Center;
-            text.VerticalAlignment = VerticalAlignment.Center;
-            text.FontSize = 22;
-            text.Text = model.Name;
             
-            grid.Children.Add(text);
-            
-            return grid;
         }
 
-        return null;
+        return grid;
     }
 
     public bool Match(object? data)
     {
-        return data is NamedImageModel;
+        return data is BaseNameModel;
     }
 }

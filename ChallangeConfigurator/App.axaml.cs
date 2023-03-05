@@ -19,7 +19,7 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        Locator.CurrentMutable.RegisterConstant(new LiteRepository("Filename=./data.db; Connection=shared;"));
+        Locator.CurrentMutable.RegisterConstant<ILiteRepository>(new LiteRepository("Filename=./data.db; Connection=shared;"));
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
@@ -31,7 +31,7 @@ public partial class App : Application
 
         AppDomain.CurrentDomain.ProcessExit += (s, e) =>
         {
-            Locator.Current.GetService<LiteRepository>().Dispose();
+            Locator.Current.GetService<ILiteRepository>().Dispose();
         };
         
         Locator.CurrentMutable.RegisterViewsForViewModels(GetType().Assembly);

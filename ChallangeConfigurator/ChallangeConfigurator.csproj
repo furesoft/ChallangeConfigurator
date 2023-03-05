@@ -10,6 +10,7 @@
     <ItemGroup>
         <Folder Include="Models\" />
         <AvaloniaResource Include="Assets\**" />
+        <Folder Include="Models\Rules" />
         <None Remove=".gitignore" />
         <None Update="stellen.png">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -19,7 +19,7 @@ public class ChallangesPageViewModel : PageViewModel
     {
         SelectedGame = selectedGame;
 
-        Challanges = new(Locator.Current.GetService<LiteRepository>().Query<Challange>().ToEnumerable());
+        Challanges = new(Locator.Current.GetService<ILiteRepository>().Query<Challange>().ToEnumerable());
         
         HeaderButtons.Add(new(MaterialIconKind.Add, null, null));
     }

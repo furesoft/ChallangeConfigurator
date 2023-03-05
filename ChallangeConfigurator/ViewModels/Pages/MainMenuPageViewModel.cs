@@ -50,6 +50,6 @@ public class MainMenuPageViewModel : PageViewModel
         HeaderButtons.Add(new(MaterialIconKind.ChartFinance, NavigateToStatsCommand, "Statistik"));
         HeaderButtons.Add(new(MaterialIconKind.LibraryAdd, AddGameCommand, "Neues Spiel"));
 
-        Games = new(Locator.Current.GetService<LiteRepository>().Query<Game>().ToEnumerable());
+        Games = new(Locator.Current.GetService<ILiteRepository>().Query<Game>().ToEnumerable());
     }
 }

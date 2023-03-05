@@ -6,17 +6,15 @@ using Splat;
 
 namespace ChallangeConfigurator.Core;
 
-public class NamedImageModel : BaseModel
+public class NamedImageModel : BaseNameModel
 {
-    [Reactive] public string Name { get; set; }
-
     [BsonIgnore]
     public IBitmap Image { get; set; }
 
     public void LoadImage()
     {
         var ms = new MemoryStream();
-        var databaseFileStorage = Locator.Current.GetService<LiteRepository>().Database.FileStorage;
+        var databaseFileStorage = Locator.Current.GetService<ILiteRepository>().Database.FileStorage;
 
         if (Image != null || !databaseFileStorage.Exists(_id.ToString()))
         {
