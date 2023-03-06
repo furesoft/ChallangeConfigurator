@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ChallangeConfigurator.Models;
+using ChallangeConfigurator.Models.AdditionalInfos;
 using LiteDB;
 using Splat;
 
@@ -10,15 +11,14 @@ public class DebugDatabaseBuilder
 {
     public static void Build()
     {
-        var repository = Locator.Current.GetService<LiteRepository>();
+        var repository = Locator.Current.GetService<ILiteRepository>();
 
-        for (int i = 0; i < 5; i++)
+        foreach (var game in repository.Query<Game>().ToEnumerable())
         {
-            var game = new Challange();
-            game._id = ObjectId.NewObjectId();
-            game.Name = "Challange " + i;
+            game.AdditionalInfos = new();
+            game.AdditionalInfos.Add(new LinkAdditionalInfo() { Label = "Youtube", URL = "https://youtube.com/" });
 
-            repository.Insert(game);
+            repository.Update(game);
         }
     }   
 }

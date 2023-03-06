@@ -2,6 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles"
              xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:d="clr-namespace:ChallangeConfigurator.Models.AdditionalInfos"
+             xmlns:controls="clr-namespace:ChallangeConfigurator.Controls"
              RequestedThemeVariant="Light"
              x:Class="ChallangeConfigurator.App">
     <Application.Styles>
@@ -14,5 +16,16 @@
         <materialIcons:MaterialIconStyles />
         
         <StyleInclude Source="Assets/Styles.axaml" />
+        <StyleInclude Source="Assets/Controls/LinkStyle.axaml" />
     </Application.Styles>
+    
+    <Application.DataTemplates>
+        <DataTemplate DataType="{x:Type d:TextAdditionalInfo}">
+            <TextBlock Text="{Binding Text, Mode=TwoWay}" TextWrapping="WrapWithOverflow" />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type d:LinkAdditionalInfo}">
+            <controls:Link Title="{Binding Label, Mode=TwoWay}" URL="{Binding URL, Mode=TwoWay}" />
+        </DataTemplate>
+    </Application.DataTemplates>
 </Application>

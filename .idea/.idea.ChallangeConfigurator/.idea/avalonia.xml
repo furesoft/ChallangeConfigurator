@@ -4,6 +4,8 @@
     <option name="projectPerEditor">
       <map>
         <entry key="ChallangeConfigurator/App.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Assets/AdditionalInfoDataTemplates.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Assets/Controls/LinkStyle.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Assets/DataTemplates.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Assets/Styles.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/MainWindow.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
