@@ -1,0 +1,32 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:wpf="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ChallangeConfigurator.Views.Pages.NewGamePage">
+    <Grid>
+        <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
+        
+        <Grid ColumnDefinitions="150,*" RowDefinitions="150" Margin="5,50,5,5">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="5" DragDrop.AllowDrop="True">
+                <Grid Width="150" Height="150" DragDrop.AllowDrop="True">
+                    <Image Margin="5" Width="130" Height="130" DragDrop.AllowDrop="True"
+                           Source="{Binding Image, Mode=TwoWay}" />
+
+                    <TextBlock IsVisible="{Binding !HasImageSet, Mode=TwoWay}" DragDrop.AllowDrop="True"
+                               Text="Bild hier einfügen" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock.RenderTransform>
+                            <RotateTransform Angle="45" />
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Grid>
+            </Border>
+
+            <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0" Width="450" Height="75"
+                     Grid.Column="1"
+                     Text="{Binding Game.Name, Mode=TwoWay}" UseFloatingWatermark="True"
+                     wpf:TextFieldAssist.Label="Name" />
+        </Grid>
+    </Grid>
+</UserControl>

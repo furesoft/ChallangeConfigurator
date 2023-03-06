@@ -9,6 +9,7 @@
         <entry key="ChallangeConfigurator/Views/MainWindow.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/Pages/ChallangesPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/Pages/MainMenuPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Views/Pages/NewGamePage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/Pages/StatisticsPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
       </map>
     </option>

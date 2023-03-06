@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using ChallangeConfigurator.Core;
 using ChallangeConfigurator.Models;
-using ChallangeConfigurator.Models.UI;
 using LiteDB;
 using Material.Icons;
 using ReactiveUI;

@@ -41,6 +41,13 @@ public class MainMenuPageViewModel : PageViewModel
     public MainMenuPageViewModel()
     {
         //DebugDatabaseBuilder.Build();
+
+        AddGameCommand = ReactiveCommand.Create(() =>
+        {
+            RoutingState router = Locator.Current.GetService<RoutingState>();
+
+            router.Navigate.Execute(new NewGamePageViewModel());
+        });
         
         NavigateToStatsCommand = ReactiveCommand.Create(() =>
         {
