@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
+using Avalonia.X11;
 using ChallangeConfigurator.Core;
 using ChallangeConfigurator.Models;
 using ChallangeConfigurator.Models.UI;
@@ -35,13 +36,19 @@ public class NewGamePageViewModel : PageViewModel
         game.Name = Game.Name;
         game._id = ObjectId.NewObjectId();
 
+        var imageStrm = new MemoryStream();
+        Bitmap.DecodeToWidth(File.OpenRead(Game.ImageFilename),150, BitmapInterpolationMode.MediumQuality)
+            .Save(imageStrm);
+
+        imageStrm.Seek(0, SeekOrigin.Begin);
+        
         repository.Database.FileStorage.Upload(game._id.ToString(), game._id.ToString(),
-            File.OpenRead(Game.ImageFilename));
+            imageStrm);
 
         repository.Insert(game);
 
         router.NavigateBack.Execute();
         
-        ((MainMenuPageViewModel)router.CurrentViewModel).Games.Add(game);
+        ((MainMenuPageViewModel)router.CurrentViewModel).Games.Insert(0, game);
     }
 }

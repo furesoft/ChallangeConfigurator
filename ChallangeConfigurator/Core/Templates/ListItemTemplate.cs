@@ -14,7 +14,7 @@ public class ListItemTemplate : IDataTemplate
         var model = (BaseNameModel)param;
         
         var text = new TextBlock();
-        text.HorizontalAlignment = HorizontalAlignment.Center;
+        text.HorizontalAlignment = HorizontalAlignment.Left;
         text.VerticalAlignment = VerticalAlignment.Center;
         text.FontSize = 22;
         text.Text = model.Name;
@@ -32,6 +32,7 @@ public class ListItemTemplate : IDataTemplate
                 Height = 50,
                 HorizontalAlignment = HorizontalAlignment.Left
             };
+            text.HorizontalAlignment = HorizontalAlignment.Center;
             
             grid.Children.Add(img);
             

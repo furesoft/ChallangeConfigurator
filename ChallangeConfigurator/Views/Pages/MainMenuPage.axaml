@@ -7,6 +7,6 @@
     <StackPanel Spacing="5">
         <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
         
-        <ListBox Classes="items" Items="{Binding Games}" SelectedItem="{Binding SelectedGame, Mode=TwoWay}" />
+        <ListBox Height="500" Classes="items" Items="{Binding Games}" SelectedItem="{Binding SelectedGame, Mode=TwoWay}" />
     </StackPanel>
 </UserControl>
