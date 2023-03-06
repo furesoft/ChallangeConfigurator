@@ -2,13 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ChallangeConfigurator.Views.Pages.ChallangesPage">
     <StackPanel Spacing="5">
         <Grid>
             <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
-
-
+            
             <StackPanel HorizontalAlignment="Left" Margin="5,50,0,0" Spacing="10"
                         VerticalAlignment="Center" Orientation="Horizontal">
                 <Image Source="{Binding SelectedGame.Image}" Width="150" Height="150" />
@@ -25,6 +26,15 @@
                     </ItemsControl>
                 </StackPanel>
             </StackPanel>
+            
+            <controls:FloatingButton Classes="Mini" Command="{Binding AcceptEditCommand, Mode=TwoWay}"
+                                     ToolTip.Tip="Änderungen übernehmen" HorizontalAlignment="Right" IsVisible="{Binding IsEditMode, Mode=TwoWay}">
+                <Viewbox Stretch="Fill"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch">
+                    <avalonia:MaterialIcon Kind="Done" Width="22" Height="22" />
+                </Viewbox>
+            </controls:FloatingButton>
         </Grid>
 
         <ListBox Classes="items" Margin="5,20,5,5" Items="{Binding Challanges}"

@@ -15,7 +15,8 @@ public class DebugDatabaseBuilder
 
         foreach (var game in repository.Query<Game>().ToEnumerable())
         {
-            game.AdditionalInfos = new();
+            game.AdditionalInfos ??= new();
+            game.AdditionalInfos.Add(new TextAdditionalInfo() { Text = "Some useful information" });
             game.AdditionalInfos.Add(new LinkAdditionalInfo() { Label = "Youtube", URL = "https://youtube.com/" });
 
             repository.Update(game);
