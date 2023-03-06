@@ -1,0 +1,25 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:ChallangeConfigurator.Assets.Controls">
+    <Design.PreviewWith>
+        <controls:EditableContainer />
+    </Design.PreviewWith>
+
+    <Style Selector="controls|EditableContainer[IsEditMode=True]">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter Content="{TemplateBinding EditModeContent}" IsVisible="True" />    
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="controls|EditableContainer[IsEditMode=False]">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <ContentPresenter Content="{TemplateBinding Content}" IsVisible="True" />   
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

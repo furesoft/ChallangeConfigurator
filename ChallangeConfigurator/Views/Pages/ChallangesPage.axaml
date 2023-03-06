@@ -4,31 +4,43 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:local="clr-namespace:ChallangeConfigurator.Assets.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ChallangeConfigurator.Views.Pages.ChallangesPage">
     <StackPanel Spacing="5">
         <Grid>
             <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
-            
+
             <StackPanel HorizontalAlignment="Left" Margin="5,50,0,0" Spacing="10"
                         VerticalAlignment="Center" Orientation="Horizontal">
                 <Image Source="{Binding SelectedGame.Image}" Width="150" Height="150" />
-                
+
                 <StackPanel Spacing="5">
                     <TextBlock Text="{Binding SelectedGame.Name, Mode=TwoWay}" FontSize="22" Margin="0,5,0,0" />
-                    
+
                     <ItemsControl MaxHeight="300" Items="{Binding SelectedGame.AdditionalInfos}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <local:EditableContainer Content="{Binding}" IsEditMode="{Binding  $parent[ItemsControl].DataContext.IsEditMode, Mode=TwoWay}">
+                                    <local:EditableContainer.EditModeContent>
+                                        <TextBlock Text="in edit mode" />
+                                    </local:EditableContainer.EditModeContent>
+                                </local:EditableContainer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </StackPanel>
             </StackPanel>
-            
+
             <controls:FloatingButton Classes="Mini" Command="{Binding AcceptEditCommand, Mode=TwoWay}"
-                                     ToolTip.Tip="Änderungen übernehmen" HorizontalAlignment="Right" IsVisible="{Binding IsEditMode, Mode=TwoWay}">
+                                     ToolTip.Tip="Änderungen übernehmen" HorizontalAlignment="Right"
+                                     IsVisible="{Binding IsEditMode, Mode=TwoWay}">
                 <Viewbox Stretch="Fill"
                          HorizontalAlignment="Stretch"
                          VerticalAlignment="Stretch">
