@@ -10,7 +10,7 @@ namespace ChallangeConfigurator.ViewModels;
 
 public class MainWindowViewModel : ReactiveObject, IScreen
 {
-    public RoutingState Router { get; } = new RoutingState();
+    public RoutingState Router { get; } = new();
     
     public ReactiveCommand<Unit, IRoutableViewModel> GoNext { get; }
     

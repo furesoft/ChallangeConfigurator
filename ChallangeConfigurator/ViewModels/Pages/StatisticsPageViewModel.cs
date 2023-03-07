@@ -42,7 +42,7 @@ public class StatisticsPageViewModel : PageViewModel
         {
             // here you can configure the series assigned to each value.
             series.Name = $"Series for value {value}";
-            series.DataLabelsPaint = new SolidColorPaint(new SKColor(30, 30, 30));
+            series.DataLabelsPaint = new SolidColorPaint(new(30, 30, 30));
             series.DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle;
             series.DataLabelsFormatter = p => $"{p.PrimaryValue} / {p.StackedValue!.Total} ({p.StackedValue.Share:P2})";
         });
@@ -50,11 +50,11 @@ public class StatisticsPageViewModel : PageViewModel
     
     public IEnumerable<ISeries> Series { get; set; }
     public LabelVisual Title { get; set; } =
-        new LabelVisual
+        new()
         {
             Text = "My chart title",
             TextSize = 25,
-            Padding = new LiveChartsCore.Drawing.Padding(15),
+            Padding = new(15),
             Paint = new SolidColorPaint(SKColors.DarkSlateGray)
         };
 }

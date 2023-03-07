@@ -16,7 +16,13 @@
                 <Image Source="{Binding SelectedGame.Image}" Width="150" Height="150" />
 
                 <StackPanel Spacing="5">
-                    <TextBlock Text="{Binding SelectedGame.Name, Mode=TwoWay}" FontSize="22" Margin="0,5,0,0" />
+                    <local:EditableContainer IsDeleteable="False"
+                                             IsEditMode="{Binding  IsEditMode, Mode=TwoWay}">
+                        <Grid>
+                            <TextBlock IsVisible="{Binding  !IsEditMode, Mode=TwoWay}" Text="{Binding SelectedGame.Name, Mode=TwoWay}" FontSize="22" Margin="0,5,0,0" />
+                            <TextBox IsVisible="{Binding  IsEditMode, Mode=TwoWay}" Text="{Binding SelectedGame.Name, Mode=TwoWay}" />
+                        </Grid>
+                    </local:EditableContainer>
 
                     <ItemsControl MaxHeight="300" Items="{Binding SelectedGame.AdditionalInfos}">
                         <ItemsControl.ItemsPanel>
@@ -27,9 +33,10 @@
 
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <local:EditableContainer Content="{Binding}" IsEditMode="{Binding  $parent[ItemsControl].DataContext.IsEditMode, Mode=TwoWay}">
+                                <local:EditableContainer Content="{Binding}"
+                                                         IsEditMode="{Binding  $parent[ItemsControl].DataContext.IsEditMode, Mode=TwoWay}">
                                     <local:EditableContainer.EditModeContent>
-                                        <TextBlock Text="in edit mode" />
+                                        <ContentPresenter Content="{Binding EditView, Mode=TwoWay}" />
                                     </local:EditableContainer.EditModeContent>
                                 </local:EditableContainer>
                             </DataTemplate>
