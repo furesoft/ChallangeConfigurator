@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Templates;
+using Avalonia.Layout;
 using Avalonia.Media;
 
 namespace ChallangeConfigurator.Models.AdditionalInfos.EditViewTemplates;
@@ -12,6 +13,7 @@ public class LinkEditTemplate : IDataTemplate
         
         var stackPanel = new StackPanel();
         stackPanel.Spacing = 2;
+        stackPanel.Orientation = Orientation.Horizontal;
 
         var labelTb = new TextBox
         {
@@ -19,6 +21,12 @@ public class LinkEditTemplate : IDataTemplate
             UseFloatingWatermark = true,
             Text = model.Label,
             FontSize = 15,
+            MinWidth = 150,
+        };
+
+        labelTb.Loaded += (s, e) =>
+        {
+            labelTb.Focus();
         };
 
         stackPanel.Children.Add(labelTb);
@@ -29,6 +37,7 @@ public class LinkEditTemplate : IDataTemplate
             UseFloatingWatermark = true,
             Text = model.URL,
             FontSize = 15,
+            MinWidth = 150,
         };
 
         labelTb.TextChanged += (s, e) => { model.Label = labelTb.Text; };
