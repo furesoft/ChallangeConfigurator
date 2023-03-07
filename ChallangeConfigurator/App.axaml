@@ -5,6 +5,8 @@
              xmlns:d="clr-namespace:ChallangeConfigurator.Models.AdditionalInfos"
              xmlns:dl="clr-namespace:ChallangeConfigurator.Models.AdditionalInfos.Layout"
              xmlns:controls="clr-namespace:ChallangeConfigurator.Controls"
+             xmlns:converters="clr-namespace:ChallangeConfigurator.Core.Converters"
+             xmlns:markupExtensions="clr-namespace:ChallangeConfigurator.Core.MarkupExtensions"
              RequestedThemeVariant="Light"
              x:Class="ChallangeConfigurator.App">
     <Application.Styles>
@@ -29,6 +31,12 @@
 
         <DataTemplate DataType="{x:Type d:LinkAdditionalInfo}">
             <controls:Link Title="{Binding Label, Mode=TwoWay}" URL="{Binding URL, Mode=TwoWay}" />
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type d:SocialIconAdditionalInfo}">
+            <Button Classes="Flat" Width="35" Height="35" Command="{markupExtensions:OpenLink}" CommandParameter="{Binding, Mode=TwoWay}">
+                <Image Margin="1" Width="35" Height="35" Source="{Binding Icon, Converter={converters:SocialIconConverter}}" />
+            </Button>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type dl:AdditionalInfoStackLayout}">

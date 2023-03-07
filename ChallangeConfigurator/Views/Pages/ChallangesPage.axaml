@@ -5,6 +5,7 @@
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              xmlns:local="clr-namespace:ChallangeConfigurator.Assets.Controls"
+             xmlns:controls1="clr-namespace:ChallangeConfigurator.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ChallangeConfigurator.Views.Pages.ChallangesPage">
     <StackPanel Spacing="5">
@@ -19,8 +20,10 @@
                     <local:EditableContainer IsDeleteable="False"
                                              IsEditMode="{Binding  IsEditMode, Mode=TwoWay}">
                         <Grid>
-                            <TextBlock IsVisible="{Binding  !IsEditMode, Mode=TwoWay}" Text="{Binding SelectedGame.Name, Mode=TwoWay}" FontSize="22" Margin="0,5,0,0" />
-                            <TextBox IsVisible="{Binding  IsEditMode, Mode=TwoWay}" Text="{Binding SelectedGame.Name, Mode=TwoWay}" />
+                            <TextBlock IsVisible="{Binding  !IsEditMode, Mode=TwoWay}"
+                                       Text="{Binding SelectedGame.Name, Mode=TwoWay}" FontSize="22" Margin="0,5,0,0" />
+                            <TextBox IsVisible="{Binding  IsEditMode, Mode=TwoWay}"
+                                     Text="{Binding SelectedGame.Name, Mode=TwoWay}" />
                         </Grid>
                     </local:EditableContainer>
 
@@ -45,15 +48,34 @@
                 </StackPanel>
             </StackPanel>
 
-            <controls:FloatingButton Classes="Mini" Command="{Binding AcceptEditCommand, Mode=TwoWay}"
-                                     ToolTip.Tip="Änderungen übernehmen" HorizontalAlignment="Right"
-                                     IsVisible="{Binding IsEditMode, Mode=TwoWay}">
-                <Viewbox Stretch="Fill"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Stretch">
-                    <avalonia:MaterialIcon Kind="Done" Width="22" Height="22" />
-                </Viewbox>
-            </controls:FloatingButton>
+            <StackPanel Margin="5" IsVisible="{Binding IsEditMode, Mode=TwoWay}" HorizontalAlignment="Right"
+                        Orientation="Horizontal" Spacing="5">
+                <controls:FloatingButton Classes="Mini" Command="{Binding ApplyChangesCommand, Mode=TwoWay}"
+                                         ToolTip.Tip="Änderungen übernehmen"
+                                         CommandParameter="{Binding SelectedGame, Mode=TwoWay}">
+                    <Viewbox Stretch="Fill"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch">
+                        <avalonia:MaterialIcon Kind="Done" Width="22" Height="22" />
+                    </Viewbox>
+                </controls:FloatingButton>
+
+                <controls1:ImagePopupButton VerticalAlignment="Top" HorizontalAlignment="Right" Kind="AddBox" CommandParameter="{Binding SelectedGame, Mode=TwoWay}"
+                                            Text="Information hinzufügen" IsChecked="{Binding IsAddPopupOpen, Mode=TwoWay}">
+
+                    <controls1:ImagePopupButton.PopupContent>
+                        <Border Width="150" Height="150" Background="White">
+                            <ListBox Items="{Binding AdditionalInfoTypes}" SelectedItem="{Binding SelectedAdditionalInfoType}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </controls1:ImagePopupButton.PopupContent>
+                </controls1:ImagePopupButton>
+            </StackPanel>
         </Grid>
 
         <ListBox Classes="items" Margin="5,20,5,5" Items="{Binding Challanges}"

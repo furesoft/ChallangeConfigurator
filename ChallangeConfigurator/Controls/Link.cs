@@ -38,29 +38,29 @@ public class Link : Button
 
     public Link()
     {
-        Command = ReactiveCommand.Create(OpenLink);
+        Command = ReactiveCommand.Create(() => OpenLink(URL));
     }
 
-    private void OpenLink()
+    public static void OpenLink(string url)
     {
         try
         {
-            Process.Start(URL);
+            Process.Start(url);
         }
         catch
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                URL = URL.Replace("&", "^&");
-                Process.Start(new ProcessStartInfo("cmd", $"/c start {URL}") {CreateNoWindow = true});
+                url = url.Replace("&", "^&");
+                Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") {CreateNoWindow = true});
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Process.Start("xdg-open", URL);
+                Process.Start("xdg-open", url);
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Process.Start("open", URL);
+                Process.Start("open", url);
             }
             else
             {
