@@ -5,7 +5,7 @@ using ReactiveUI.Fody.Helpers;
 
 namespace ChallangeConfigurator.Models.AdditionalInfos;
 
-public class LinkAdditionalInfo : EditableModel
+public class LinkAdditionalInfo : AdditionalInfoModel
 {
     [Reactive] public string Label { get; set; }
     [Reactive] public string URL { get; set; }
@@ -13,5 +13,7 @@ public class LinkAdditionalInfo : EditableModel
     public LinkAdditionalInfo()
     {
         EditViewTemplate = new LinkEditTemplate();
+
+        Name = "Link";
     }
 }

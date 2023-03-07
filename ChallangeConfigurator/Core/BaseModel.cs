@@ -7,7 +7,7 @@ namespace ChallangeConfigurator.Core;
 public class BaseModel : INotifyPropertyChanged
 {
     [BsonId]
-    public ObjectId _id { get; set; }
+    public ObjectId _id { get; set; } = ObjectId.NewObjectId();
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -21,6 +21,7 @@ public class BaseModel : INotifyPropertyChanged
         if (EqualityComparer<T>.Default.Equals(field, value)) return false;
         field = value;
         OnPropertyChanged(propertyName);
+        
         return true;
     }
 }

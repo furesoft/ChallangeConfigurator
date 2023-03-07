@@ -19,6 +19,7 @@
         <StyleInclude Source="Assets/Styles.axaml" />
         <StyleInclude Source="Assets/Controls/LinkStyle.axaml" />
         <StyleInclude Source="Assets/Controls/EditableContainer.axaml" />
+        <StyleInclude Source="Assets/Controls/ImagePopupButtonStyle.axaml" />
     </Application.Styles>
 
     <Application.DataTemplates>
