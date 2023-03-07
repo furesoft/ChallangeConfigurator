@@ -8,12 +8,16 @@ public class TextEditTemplate : IDataTemplate
 {
     public Control Build(object param)
     {
-        var model = (TextAdditionalInfo)param;
-        
+        var model = (TextAdditionalInfo) param;
+
         var labelTb = new TextBox();
         labelTb.Watermark = "Text";
         labelTb.UseFloatingWatermark = true;
-        
+        labelTb.Loaded += (sender, args) =>
+        {
+            labelTb.Focus();
+        };
+
         labelTb.TextChanged += (s, e) => { model.Text = labelTb.Text; };
         labelTb.Text = model.Text;
 
