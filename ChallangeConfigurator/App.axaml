@@ -34,7 +34,7 @@
         </DataTemplate>
         
         <DataTemplate DataType="{x:Type d:SocialIconAdditionalInfo}">
-            <Button Classes="Flat" Width="35" Height="35" Command="{markupExtensions:OpenLink}" CommandParameter="{Binding, Mode=TwoWay}">
+            <Button HorizontalAlignment="Left" Classes="Flat" Width="35" Height="35" Command="{markupExtensions:OpenLink}" CommandParameter="{Binding, Mode=TwoWay}">
                 <Image Margin="1" Width="35" Height="35" Source="{Binding Icon, Converter={converters:SocialIconConverter}}" />
             </Button>
         </DataTemplate>

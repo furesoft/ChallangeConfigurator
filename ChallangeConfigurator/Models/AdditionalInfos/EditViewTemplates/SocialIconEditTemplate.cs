@@ -21,8 +21,8 @@ public class SocialIconEditTemplate : IDataTemplate
 
         var iconCb = new ComboBox()
         {
-            SelectedIndex = (int)model.Icon,
             Items = Enum.GetNames<SocialIconKind>(),
+            SelectedIndex = (int)model.Icon,
             FontSize = 15,
             Width = 40,
         };
