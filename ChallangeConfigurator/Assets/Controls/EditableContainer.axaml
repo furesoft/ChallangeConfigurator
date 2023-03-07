@@ -1,23 +1,39 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:ChallangeConfigurator.Assets.Controls">
-    <Design.PreviewWith>
-        <controls:EditableContainer />
-    </Design.PreviewWith>
-
+        xmlns:controls="using:ChallangeConfigurator.Assets.Controls"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:core="clr-namespace:ChallangeConfigurator.Core">
     <Style Selector="controls|EditableContainer[IsEditMode=True]">
         <Setter Property="Template">
             <ControlTemplate>
-                <ContentPresenter Content="{TemplateBinding EditModeContent}" IsVisible="True" />    
+                <Grid ColumnDefinitions="*, 47" Margin="2">
+                    <Button Margin="1" Grid.Column="1" VerticalAlignment="Center" Classes="Flat"
+                            Command="{TemplateBinding DeleteCommand, Mode=TwoWay}"
+                            CommandParameter="{TemplateBinding CommandParameter, Mode=TwoWay}" ToolTip.Tip="Entfernen"
+                            HorizontalAlignment="Right" IsVisible="{TemplateBinding IsDeleteable, Mode=TwoWay}">
+                        <Viewbox Stretch="Fill"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch">
+                            <avalonia:MaterialIcon Kind="Delete" Width="30" Height="30" />
+                        </Viewbox>
+                    </Button>
+
+                    <ContentPresenter VerticalAlignment="Center" Content="{TemplateBinding Content, Mode=TwoWay}"
+                                      IsVisible="True">
+                        <ContentPresenter.DataTemplates>
+                            <core:ModelTemplateSelector />
+                        </ContentPresenter.DataTemplates>
+                    </ContentPresenter>
+                </Grid>
             </ControlTemplate>
         </Setter>
     </Style>
-    
+
     <Style Selector="controls|EditableContainer[IsEditMode=False]">
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid>
-                    <ContentPresenter Content="{TemplateBinding Content}" IsVisible="True" />   
+                    <ContentPresenter Content="{TemplateBinding Content, Mode=TwoWay}" IsVisible="True" />
                 </Grid>
             </ControlTemplate>
         </Setter>
