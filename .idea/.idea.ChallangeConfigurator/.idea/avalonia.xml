@@ -11,6 +11,7 @@
         <entry key="ChallangeConfigurator/Assets/DataTemplates.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Assets/Styles.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/MainWindow.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
+        <entry key="ChallangeConfigurator/Views/Pages/ChallangeDetailPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/Pages/ChallangesPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/Pages/MainMenuPage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />
         <entry key="ChallangeConfigurator/Views/Pages/NewGamePage.axaml" value="ChallangeConfigurator/ChallangeConfigurator.csproj" />

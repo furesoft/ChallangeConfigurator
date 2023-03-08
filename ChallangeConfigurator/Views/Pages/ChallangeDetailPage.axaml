@@ -1,0 +1,77 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:ChallangeConfigurator.Assets.Controls"
+             xmlns:controls1="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:controls2="clr-namespace:ChallangeConfigurator.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ChallangeConfigurator.Views.Pages.ChallangeDetailPage">
+    <Grid>
+            <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
+
+            <StackPanel HorizontalAlignment="Left" Margin="5,50,0,0" Spacing="10"
+                        VerticalAlignment="Top" Orientation="Horizontal">
+                <StackPanel Spacing="5">
+                    <controls:EditableContainer IsDeleteable="False"
+                                             IsEditMode="{Binding  IsEditMode, Mode=TwoWay}">
+                        <Grid>
+                            <TextBlock IsVisible="{Binding  !IsEditMode, Mode=TwoWay}"
+                                       Text="{Binding SelectedChallange.Name, Mode=TwoWay}" FontSize="22" Margin="0,5,0,0" />
+                            <TextBox IsVisible="{Binding  IsEditMode, Mode=TwoWay}"
+                                     Text="{Binding SelectedChallange.Name, Mode=TwoWay}" />
+                        </Grid>
+                    </controls:EditableContainer>
+
+                    <ItemsControl MaxHeight="300" Items="{Binding SelectedChallange.Rules}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <controls:EditableContainer Content="{Binding}"
+                                                         IsEditMode="{Binding  $parent[ItemsControl].DataContext.IsEditMode, Mode=TwoWay}">
+                                    <controls:EditableContainer.EditModeContent>
+                                        <ContentPresenter Content="{Binding EditView, Mode=TwoWay}" />
+                                    </controls:EditableContainer.EditModeContent>
+                                </controls:EditableContainer>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Margin="5" IsVisible="{Binding IsEditMode, Mode=TwoWay}" HorizontalAlignment="Right"
+                        Orientation="Horizontal" Spacing="5">
+                <controls1:FloatingButton Classes="Mini" Command="{Binding ApplyChangesCommand, Mode=TwoWay}"
+                                         ToolTip.Tip="Änderungen übernehmen"
+                                         CommandParameter="{Binding SelectedGame, Mode=TwoWay}">
+                    <Viewbox Stretch="Fill"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch">
+                        <avalonia:MaterialIcon Kind="Done" Width="22" Height="22" />
+                    </Viewbox>
+                </controls1:FloatingButton>
+
+                <controls2:ImagePopupButton VerticalAlignment="Top" HorizontalAlignment="Right" Kind="AddBox" CommandParameter="{Binding SelectedGame, Mode=TwoWay}"
+                                            Text="Regel hinzufügen" IsChecked="{Binding IsAddPopupOpen, Mode=TwoWay}">
+
+                    <controls2:ImagePopupButton.PopupContent>
+                        <Border Width="150" Height="150" Background="White">
+                            <ListBox Items="{Binding RuleTypes}" SelectedItem="{Binding SelectedRule}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </controls2:ImagePopupButton.PopupContent>
+                </controls2:ImagePopupButton>
+            </StackPanel>
+        </Grid>
+</UserControl>

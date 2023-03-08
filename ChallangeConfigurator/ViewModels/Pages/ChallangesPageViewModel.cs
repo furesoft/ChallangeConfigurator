@@ -18,10 +18,31 @@ namespace ChallangeConfigurator.ViewModels.Pages;
 public class ChallangesPageViewModel : PageViewModel
 {
     private object _selectedAdditionalInfoType;
+    private Challange _selectedChallange;
     public Game SelectedGame { get; }
 
     public ObservableCollection<Challange> Challanges { get; set; }
     public ObservableCollection<object> AdditionalInfoTypes { get; set; }
+    
+    public Challange SelectedChallange
+    {
+        get => _selectedChallange;
+        set
+        {
+            _selectedChallange = value;
+            
+            this.RaisePropertyChanged();
+            
+            NavigateToChallange(_selectedChallange);
+        }
+    }
+    
+    private void NavigateToChallange(Challange selectedChallange)
+    {
+        RoutingState router = Locator.Current.GetService<RoutingState>();
+
+        router.Navigate.Execute(new ChallangeDetailPageViewModel(selectedChallange));
+    }
 
     public object SelectedAdditionalInfoType
     {
@@ -76,12 +97,12 @@ public class ChallangesPageViewModel : PageViewModel
         Challanges = new(Locator.Current.GetService<ILiteRepository>().Query<Challange>().ToEnumerable());
 
         HeaderButtons.Add(new(MaterialIconKind.Edit, ReactiveCommand.Create(SetEditMode), "Spiel bearbeiten"));
-        HeaderButtons.Add(new(MaterialIconKind.Add, null, "Information hinzufügen"));
+        //HeaderButtons.Add(new(MaterialIconKind.Add, null, "Information hinzufügen"));
 
         PutAdditionalLinksIntoStackLayout<LinkAdditionalInfo>();
         PutAdditionalLinksIntoStackLayout<SocialIconAdditionalInfo>();
 
-        ApplyChangesCommand = ReactiveCommand.Create<BaseModel, BaseModel>(ApplyChanges);
+        ApplyChangesCommand = ReactiveCommand.Create<BaseModel>(ApplyChanges);
 
         AdditionalInfoTypes = new(GetType().Assembly
             .GetTypes()
@@ -91,12 +112,11 @@ public class ChallangesPageViewModel : PageViewModel
         );
     }
 
-    private BaseModel ApplyChanges(BaseModel model)
+    private void ApplyChanges(BaseModel model)
     {
         IsEditMode = false;
         //ToDo: implement updating game info
 
-        return model;
     }
 
     private void PutAdditionalLinksIntoStackLayout<T>()

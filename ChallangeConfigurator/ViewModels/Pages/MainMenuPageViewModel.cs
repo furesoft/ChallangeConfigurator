@@ -24,11 +24,11 @@ public class MainMenuPageViewModel : PageViewModel
             _selectedGame = value;
             this.RaisePropertyChanged();
             
-            NavigateToChallange(_selectedGame);
+            NavigateToChallanges(_selectedGame);
         }
     }
 
-    private void NavigateToChallange(Game selectedGame)
+    private void NavigateToChallanges(Game selectedGame)
     {
         RoutingState router = Locator.Current.GetService<RoutingState>();
 
