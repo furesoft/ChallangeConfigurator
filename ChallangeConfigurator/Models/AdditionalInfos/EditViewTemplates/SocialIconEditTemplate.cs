@@ -21,7 +21,7 @@ public class SocialIconEditTemplate : IDataTemplate
 
         var iconCb = new ComboBox()
         {
-            Items = Enum.GetNames<SocialIconKind>(),
+            ItemsSource = Enum.GetNames<SocialIconKind>(),
             SelectedIndex = (int)model.Icon,
             FontSize = 15,
             Width = 40,
@@ -29,7 +29,7 @@ public class SocialIconEditTemplate : IDataTemplate
         
         iconCb.ItemTemplate = new FuncDataTemplate(_ => true, (o, scope) =>
         {
-            var img = (IBitmap)new SocialIconConverter().Convert(o, GetType(), o, CultureInfo.InvariantCulture);
+            var img = (Bitmap)new SocialIconConverter().Convert(o, GetType(), o, CultureInfo.InvariantCulture);
 
             return new Image() { Source = img, Width = 35, Height = 35 };
         });

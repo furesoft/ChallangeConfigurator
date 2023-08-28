@@ -17,11 +17,10 @@ public class SocialIconConverter : MarkupExtension, IValueConverter
         {
             value = SocialIconKind.Facebook;
         }
-        
-        var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
+
         var iconName = GetIconName(Enum.Parse<SocialIconKind>(value.ToString()));
         
-        return new Bitmap(assets.Open(new($"avares://ChallangeConfigurator/Assets/SocialIcons/{iconName}.png"), null));
+        return new Bitmap(AssetLoader.Open(new($"avares://ChallangeConfigurator/Assets/SocialIcons/{iconName}.png"), null));
     }
 
     private string GetIconName(SocialIconKind value)

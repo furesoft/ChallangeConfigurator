@@ -10,7 +10,7 @@
              x:Class="ChallangeConfigurator.Views.Pages.ChallangesPage">
     <StackPanel Spacing="5">
         <Grid>
-            <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
+            <ItemsControl Classes="headerButtons" ItemsSource="{Binding HeaderButtons}" />
 
             <StackPanel HorizontalAlignment="Left" Margin="5,50,0,0" Spacing="10"
                         VerticalAlignment="Center" Orientation="Horizontal">
@@ -27,7 +27,7 @@
                         </Grid>
                     </local:EditableContainer>
 
-                    <ItemsControl MaxHeight="300" Items="{Binding SelectedGame.AdditionalInfos}">
+                    <ItemsControl MaxHeight="300" ItemsSource="{Binding SelectedGame.AdditionalInfos}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical" />
@@ -65,7 +65,7 @@
 
                     <controls1:ImagePopupButton.PopupContent>
                         <Border Width="150" Height="150" Background="White">
-                            <ListBox Items="{Binding AdditionalInfoTypes}" SelectedItem="{Binding SelectedAdditionalInfoType}">
+                            <ListBox ItemsSource="{Binding AdditionalInfoTypes}" SelectedItem="{Binding SelectedAdditionalInfoType}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}" />
@@ -78,7 +78,7 @@
             </StackPanel>
         </Grid>
 
-        <ListBox Classes="items" Margin="5,20,5,5" Items="{Binding Challanges}"
+        <ListBox Classes="items" Margin="5,20,5,5" ItemsSource="{Binding Challanges}"
                  SelectedItem="{Binding SelectedChallange, Mode=TwoWay}" />
     </StackPanel>
 </UserControl>

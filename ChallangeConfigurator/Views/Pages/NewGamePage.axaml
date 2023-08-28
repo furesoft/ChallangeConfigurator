@@ -6,7 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ChallangeConfigurator.Views.Pages.NewGamePage">
     <Grid>
-        <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
+        <ItemsControl Classes="headerButtons" ItemsSource="{Binding HeaderButtons}" />
         
         <Grid ColumnDefinitions="150,*" RowDefinitions="150" Margin="5,50,5,5">
             <Border BorderBrush="Black" BorderThickness="1" Margin="5" DragDrop.AllowDrop="True">

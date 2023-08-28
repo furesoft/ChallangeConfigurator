@@ -16,7 +16,7 @@ namespace ChallangeConfigurator.ViewModels.Pages;
 public class NewGamePageViewModel : PageViewModel
 {
     [Reactive] public NewGameModel Game { get; set; }
-    [Reactive] public IBitmap Image { get; set; }
+    [Reactive] public Bitmap Image { get; set; }
 
     [Reactive] public bool HasImageSet { get; set; }
 
@@ -36,14 +36,17 @@ public class NewGamePageViewModel : PageViewModel
         game.Name = Game.Name;
         game._id = ObjectId.NewObjectId();
 
-        var imageStrm = new MemoryStream();
-        Bitmap.DecodeToWidth(File.OpenRead(Game.ImageFilename),150, BitmapInterpolationMode.MediumQuality)
-            .Save(imageStrm);
+        if (Game.ImageFilename != null)
+        {
+            var imageStrm = new MemoryStream();
+            Bitmap.DecodeToWidth(File.OpenRead(Game.ImageFilename), 150, BitmapInterpolationMode.MediumQuality)
+                .Save(imageStrm);
 
-        imageStrm.Seek(0, SeekOrigin.Begin);
-        
-        repository.Database.FileStorage.Upload(game._id.ToString(), game._id.ToString(),
-            imageStrm);
+            imageStrm.Seek(0, SeekOrigin.Begin);
+
+            repository.Database.FileStorage.Upload(game._id.ToString(), game._id.ToString(),
+                imageStrm);
+        }
 
         repository.Insert(game);
 

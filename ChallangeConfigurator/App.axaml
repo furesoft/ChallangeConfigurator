@@ -40,7 +40,7 @@
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type dl:AdditionalInfoStackLayout}">
-            <ItemsControl Items="{Binding Items, Mode=TwoWay}">
+            <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Spacing="5" Orientation="{Binding Orientation, Mode=TwoWay}" />

@@ -5,8 +5,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ChallangeConfigurator.Views.Pages.MainMenuPage">
     <StackPanel Spacing="5">
-        <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
+        <ItemsControl Classes="headerButtons" ItemsSource="{Binding HeaderButtons}" />
         
-        <ListBox Height="500" Classes="items" Items="{Binding Games}" SelectedItem="{Binding SelectedGame, Mode=TwoWay}" />
+        <ListBox Height="500" Classes="items" ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame, Mode=TwoWay}" />
     </StackPanel>
 </UserControl>

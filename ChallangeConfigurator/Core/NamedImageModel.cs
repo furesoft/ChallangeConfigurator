@@ -9,7 +9,7 @@ namespace ChallangeConfigurator.Core;
 public class NamedImageModel : BaseNameModel
 {
     [BsonIgnore]
-    public IBitmap Image { get; set; }
+    public Bitmap Image { get; set; }
 
     public void LoadImage()
     {

@@ -9,7 +9,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ChallangeConfigurator.Views.Pages.ChallangeDetailPage">
     <Grid>
-            <ItemsControl Classes="headerButtons" Items="{Binding HeaderButtons}" />
+            <ItemsControl Classes="headerButtons" ItemsSource="{Binding HeaderButtons}" />
 
             <StackPanel HorizontalAlignment="Left" Margin="5,50,0,0" Spacing="10"
                         VerticalAlignment="Top" Orientation="Horizontal">
@@ -24,7 +24,7 @@
                         </Grid>
                     </controls:EditableContainer>
 
-                    <ItemsControl MaxHeight="300" Items="{Binding SelectedChallange.Rules}">
+                    <ItemsControl MaxHeight="300" ItemsSource="{Binding SelectedChallange.Rules}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Vertical" />
@@ -62,7 +62,7 @@
 
                     <controls2:ImagePopupButton.PopupContent>
                         <Border Width="150" Height="150" Background="White">
-                            <ListBox Items="{Binding RuleTypes}" SelectedItem="{Binding SelectedRule}">
+                            <ListBox ItemsSource="{Binding RuleTypes}" SelectedItem="{Binding SelectedRule}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}" />
